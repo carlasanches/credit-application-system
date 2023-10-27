@@ -12,7 +12,7 @@ data class CreditDto (
     @field:NotNull(message = "Invalid input. Credit Value must not be empty") val creditValue: BigDecimal,
     @field:Future(message = "The day of installment must not be in the past.") val dayFirstOfInstallment: LocalDate,
     @field:Max(value = 48, message = "The number of installments must be below 48") val numberOfInstallments: Int,
-    @field:NotNull(message = "Invalid input. Customer Id must not be empty") val customerId: Long
+    @field:NotNull(message = "Invalid input. Customer Id must not be empty") val customerId: Long?
 ){
 
     fun toEntity(): Credit = Credit(

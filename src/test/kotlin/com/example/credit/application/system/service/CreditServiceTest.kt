@@ -1,4 +1,4 @@
-package service
+package com.example.credit.application.system.service
 
 import com.example.credit.application.system.entity.Credit
 import com.example.credit.application.system.entity.Customer

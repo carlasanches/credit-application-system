@@ -3,6 +3,7 @@ package com.example.credit.application.system.controller
 import com.example.credit.application.system.dto.CreditDto
 import com.example.credit.application.system.dto.CreditView
 import com.example.credit.application.system.dto.CreditViewList
+import com.example.credit.application.system.dto.CustomerView
 import com.example.credit.application.system.entity.Credit
 import com.example.credit.application.system.service.impl.CreditService
 import jakarta.validation.Valid
@@ -25,10 +26,10 @@ class CreditResource(
 ) {
 
     @PostMapping
-    fun saveCredit(@RequestBody @Valid creditDto: CreditDto): ResponseEntity<String> {
+    fun saveCredit(@RequestBody @Valid creditDto: CreditDto): ResponseEntity<CreditView> {
         val credit: Credit = this.creditService.save(creditDto.toEntity())
         return ResponseEntity.status(HttpStatus.CREATED)
-            .body("Credit ${credit.creditCode} - Customer ${credit.customer?.firstName} saved!")
+            .body(CreditView(credit))
     }
 
     @GetMapping
